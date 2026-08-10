@@ -1,85 +1,74 @@
 # Process overview
 
-<!-- TEMPLATE: this file is a shape to fill in, not a form. Replace everything
-     in it with your own overview, and delete this comment — `pnpm
-     check:evidence` will remind you if it's still here. -->
-
-A reading-guide to how the work came together --- a map to your process, not an
-essay about it. Markers read this file and follow its citations; they don't
-trawl the repo for evidence you didn't point at, so if a moment mattered, cite
-it.
-
-This file is the shape; the course site's
-[assessment page](https://comp.anu.edu.au/courses/comp4020-agentic-coding-studio/topics/assessment/#what-you-submit)
-is the requirement, and its
-[word counts](https://comp.anu.edu.au/courses/comp4020-agentic-coding-studio/topics/assessment/#word-counts)
-cover every deliverable.
-
 ## What I built
 
-One paragraph: the thing, and the idea behind it.
+An unsolicited redesign of [iori.com.au](https://iori.com.au/), a real Japanese
+restaurant on East Row in Canberra: a four-page static site (Home, Menu,
+Experience, Visit) built in Astro with plain CSS custom properties, aimed at
+editorial Japanese minimalism instead of the cherry-blossom/torii/red-and-gold
+template look most restaurant sites default to. Every fact on it — the awards,
+the hours, the menu, the one named sign-off — is real and traceable back to the
+actual site or its listings; nothing about the restaurant is invented.
 
 ## The moments that mattered
 
-Three or four for an assignment; fewer is fine for a weekly prototype. Keep the
-list short so each moment has room to do all four jobs:
+1. **Deciding how far to use the one real human touch on the whole site.** The
+   audit of the live site turned up exactly one named person anywhere on it —
+   "Arigatou Gozaimasu! — IORI Staff and Mamoru Aizawa," buried in the sign-off
+   of a booking-instructions page nobody reads for warmth
+   ([`242f963`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-wuyimin362-sudo/commit/242f963)).
+   The obvious moves were either to drop it as too obscure to matter, or to
+   build it up into a "meet the owner" story — the second one is exactly the
+   kind of invented brand history the brief rules out. Instead I flagged it as
+   an open question before building anything, and the design direction
+   confirmed using it minimally, "attributed exactly as the original
+   reservation-page sign-off does, with no invented title or role"
+   ([`d5c7692`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-wuyimin362-sudo/commit/d5c7692)).
+   It shipped on the Experience page exactly that way
+   ([`44b15b2`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-wuyimin362-sudo/commit/44b15b2)).
+   During final self-review I re-checked the shipped text against that original
+   decision specifically to make sure nothing had drifted toward invented
+   detail over the build — it hadn't.
 
-1. **what happened** --- the problem, or the thing the agent got wrong
-2. **what you did instead of the obvious thing** --- the call you made, and why
-   it beat the obvious one
-3. **how you knew it was right** --- the check you ran, the viewport you looked
-   at, what you read before accepting the diff
-4. **the citation** --- a commit or commit range, a `CLAUDE.md` change, a check
-   that went from red to green, a prompt paired with the commit it produced
+2. **A hero image quietly collapsing to half width, traced to its actual cause
+   instead of patched around.** Screenshotting the homepage at the graded
+   desktop viewport showed the hero photo filling only about 45% of its row.
+   The quick fix would have been a magic-number width on that one element; I
+   traced it instead to a general interaction — `aspect-ratio` and `max-height`
+   on the same box let the browser size it from the height down when nothing
+   else constrains its width — confirmed by re-screenshotting before and after
+   an explicit `width: 100%`
+   ([`f29ed89`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-wuyimin362-sudo/commit/f29ed89)).
+   Because it's a general CSS trap and not something specific to this one
+   image, I wrote the rule into `CLAUDE.md` alongside two other Astro-specific
+   traps hit the same week, rather than letting the knowledge live only in this
+   one fix
+   ([`2b5ad70`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-wuyimin362-sudo/commit/2b5ad70)).
 
-Jobs 2 and 3 are the ones the repo can't tell a reader on its own, so they're
-where the marks are. The strongest moments are the ones where a correction
-landed in the **harness** rather than in another prompt --- a rule added to
-`CLAUDE.md`, a check wired up, an attempt thrown away: re-prompting until it
-passes is the routine case, and changing what the agent works against is the
-skilled one.
-
-Cite each moment as a link whose text is the commit hash or range and whose
-target is this repo's commit or compare URL, so a reader clicks straight to the
-evidence:
-
-- one commit: [`a1b2c3d`](https://github.com/YOUR-ORG/YOUR-REPO/commit/a1b2c3d)
-- a range:
-  [`a1b2c3d...e4f5a6b`](https://github.com/YOUR-ORG/YOUR-REPO/compare/a1b2c3d...e4f5a6b)
-
-To pair a prompt with the commit it produced, quote the prompt (curated, not a
-full transcript) next to the citation:
-
-> the prompt, verbatim
-
-Screenshots are welcome where one carries the verification better than a
-sentence does. Commit the file to this repo and link it with a **relative**
-path, which is what makes it render on GitHub: `![alt text](docs/before.png)`.
-Images don't count towards the word count and don't replace the citation.
-
-### A worked moment, for shape
-
-Delete this section along with the rest of the boilerplate --- it's here to show
-the four jobs in one paragraph, not to be imitated in content.
-
-> The date formatter kept coming back with `toLocaleDateString()` and no locale
-> argument, so the same build rendered differently on my machine and in CI. I'd
-> already re-prompted it twice, which fixed the line but not the habit, so the
-> third time I put the rule in `CLAUDE.md` instead
-> ([`3f9ac21`](https://github.com/YOUR-ORG/YOUR-REPO/commit/3f9ac21)) and added
-> a spec test that fails on a bare `toLocaleDateString`. That's what told me it
-> had actually taken: the test went red against the old code and green against
-> the new, and the next two features it wrote passed it without prompting
-> ([`3f9ac21...b7e0d14`](https://github.com/YOUR-ORG/YOUR-REPO/compare/3f9ac21...b7e0d14)).
-
-## Before you ship
-
-`pnpm check:evidence` verifies your citations resolve to real commits, that the
-current reflection entry is in `reflections/`, and that your `CLAUDE.md` is
-there --- before a marker ever opens the file. It checks that your map is
-traceable, not that it is good: the marker judges whether your small,
-deliberately chosen set of moments shows real judgement and reflection. A green
-check is not a substitute for that curation.
-
-Images are deliberately not checked, because whether one renders is visible the
-moment you look. Open this file on GitHub and look at it before you ship.
+3. **A visual QA pass that looked clean still hid two real accessibility gaps
+   — found by switching from "does it look right" to a systematic sweep, and
+   landed as honest, single-concern commits.** All eight screenshots
+   (four pages × two graded viewports) came back with no overflow and nothing
+   visually wrong. But the brief also asks for logical heading structure, which
+   a screenshot can't show — so I grepped every `.section-label` usage sitewide
+   and checked each one against whether it was paired with a real heading
+   element. Two weren't: `ContactInfo`'s Address/Hours/Bookings and the
+   homepage's Recognition section were bare `<span>`s with no heading at all, a
+   gap a screen-reader user navigating by heading would hit but a sighted
+   screenshot review never would. A third suspected instance, on the Experience
+   page, looked the same from an ambiguous grep match — instead of fixing it on
+   that assumption, I read the full file and confirmed those actually were real
+   `<h2>` elements the grep just couldn't display three times from one
+   `.map()`-generated source line, and left it alone. By the time I'd made
+   these fixes plus an unrelated one (the same booking note rendering twice on
+   the Visit page, caught by reading `visit-mobile.png` closely), the working
+   tree had several unrelated concerns landed in the same file diffs. Rather
+   than one large "polish" commit, I wrote a small script to split the real
+   `git diff` output by its hunk markers and stage only the hunks belonging
+   together — after starting to hand-type a patch file and recognizing that
+   transcribing unified-diff context by hand (blank context lines need a
+   literal leading space, not true emptiness) risked a silent mismatch.
+   `git apply --cached --check` validated every patch before it touched the
+   index, and `git diff --cached` before each commit confirmed exactly the
+   intended change and nothing else
+   ([`53f2f38...949438a`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-wuyimin362-sudo/compare/53f2f38...949438a)).
