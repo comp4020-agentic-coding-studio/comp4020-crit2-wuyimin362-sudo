@@ -120,6 +120,30 @@ by hand: the course plugin's `stack` skill runs a tested conversion script that
 handles both of the traps above plus the CI link-check patch, and leaves the
 whole change staged as one reviewable diff.
 
+## Astro-specific traps
+
+Learned the hard way while building this prototype — worth checking for before
+they cost time again, in this stack or the next one that uses Astro:
+
+- **`aspect-ratio` plus `max-height` on the same element can silently collapse
+  its width.** If the element's width isn't otherwise constrained, the browser
+  can size it from the height down through the ratio rather than the width up,
+  leaving it far narrower than its container — a media box that looks squashed
+  into part of its row is usually this, not a layout bug elsewhere. Give it an
+  explicit `width: 100%` rather than relying on `aspect-ratio` alone to fill
+  its container.
+- **Whitespace right before a tag on the next line gets trimmed.** Text ending
+  a line immediately before an opening tag on the following line (`word\n<a
+  href="...">`) loses the space between them in the rendered HTML. Keep inline
+  text and the tag that follows it on the same source line whenever the space
+  between them matters.
+- **`astro preview` and `astro dev` can end up on adjacent ports, and only one
+  of them hot-reloads.** `astro preview` serves the already-built `dist/`
+  folder as a static server with no watch/rebuild. If a port you're pointing a
+  browser or screenshot tool at isn't reflecting a source edit, check which
+  command actually owns it (`ps aux | grep astro`) before assuming the edit is
+  wrong — it's more likely you need an explicit `pnpm build` first.
+
 ## Your process is part of the mark
 
 The deployed page is only half of it. How you got there is marked too: your
