@@ -36,11 +36,10 @@ const Tag = variant === "compact" ? "h3" : "h2";
   </div>
 
   <div class="contact-info__block">
-    <span class="section-label">Bookings</span>
+    <Tag class="section-label">Bookings</Tag>
     <p>
       <a href={site.phoneHref}>{site.phone}</a> · <a href={site.bookingSmsHref}>text {site.bookingSms}</a>
     </p>
-    {variant === "full" ? <p class="contact-info__note">{site.bookingNote}</p> : null}
     {
       variant === "compact" ? (
         <p>
