@@ -8,12 +8,13 @@ viewports --- 1920×1080 (desktop) and 390×844 (phone) --- and both count in
 full, so make that artefact good at both and use the checks below to know
 whether it is.
 
-What you're building this week — the spec — is published on the course website,
-and this repo's name tells you which deliverable it is. Run the course plugin's
+The course website publishes this deliverable's brief and spec. The brief poses
+the problem; the spec is the fixed contract every response must satisfy. This
+repo's name tells you which deliverable applies. Run the course plugin's
 **start** skill at the start of each week: it pulls the right spec from the
 course API, carries your harness forward from last week, and helps you turn the
-spec's checkable lines into tests of your own. Read the spec before you build,
-and see `spec/README.md` for how the checks in this repo relate to it.
+spec's checkable lines into tests of your own. Read the brief and spec before
+you plan or build, and see `spec/README.md` for how the checks relate to them.
 
 ## How to work in here
 
@@ -63,8 +64,8 @@ running counts as not green, so ship with time for CI to finish.
   if it loads locally.
 - **spec** --- `spec/invariants.test.ts` asserts what's true of any good
   website, whatever the week's brief asks; the tests you write for the week's
-  own spec run alongside it (any `spec/*.test.ts`). A failure names the contract
-  you haven't met yet.
+  spec run alongside it (any `spec/*.test.ts`). A failure names the contract you
+  haven't met yet.
 - **lint** --- `stylelint` for CSS, `oxlint` for TypeScript. Flags code that's
   wrong, fragile, or non-idiomatic. Read the rule it names.
 - **tests** --- any other tests you write, wherever you put them (co-located
@@ -114,6 +115,11 @@ generators (Astro included) need `base` set explicitly, and getting it wrong
 looks fine locally while every asset 404s on the live URL. And commit the
 updated `pnpm-lock.yaml`: CI installs with `--frozen-lockfile`.
 
+For the course default (Astro) or the bare hand-written arm, don't wire the swap
+by hand: the course plugin's `stack` skill runs a tested conversion script that
+handles both of the traps above plus the CI link-check patch, and leaves the
+whole change staged as one reviewable diff.
+
 ## Your process is part of the mark
 
 The deployed page is only half of it. How you got there is marked too: your
@@ -145,7 +151,7 @@ means building legibly is part of building well.
   work changed about the developer you want to be. It stays out of the deployed
   site. It's due at the cutoff, and if it isn't in the repo by then the week
   doesn't count as shipped, however good the prototype is.
-- **This file is process evidence.** The harness you build to direct the agent,
+- **This file is process evidence.** The harness you build to direct the work,
   this `CLAUDE.md` and any `AGENTS.md`, is itself read as part of how you
   worked. Keep it honest and current (see below).
 
@@ -155,8 +161,8 @@ know whose repo it is. Spend the effort on the work.
 ## This file is yours
 
 This CLAUDE.md is a starting point, not a fixed rulebook. As you learn what your
-prototype needs --- a convention to hold the agent to, a sensor that keeps
-catching you out, a fact about the stack the agent keeps getting wrong --- write
-it down here. Growing this file is the work of harness engineering, and the gap
+prototype needs --- a convention the work has to hold to, a sensor that keeps
+catching you out, a fact about the stack that's easy to get wrong --- write it
+down here. Growing this file is the work of harness engineering, and the gap
 between this boilerplate and your own version is part of what your prototype
 says about the developer you're becoming.
