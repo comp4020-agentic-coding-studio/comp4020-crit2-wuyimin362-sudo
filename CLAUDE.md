@@ -143,6 +143,22 @@ they cost time again, in this stack or the next one that uses Astro:
   browser or screenshot tool at isn't reflecting a source edit, check which
   command actually owns it (`ps aux | grep astro`) before assuming the edit is
   wrong — it's more likely you need an explicit `pnpm build` first.
+- **A `base` without a trailing slash breaks every link built by concatenation,
+  and `astro dev`/`astro preview` can't show you this.** `import.meta.env.BASE_URL`
+  is exactly the string you set in `astro.config.mjs`'s `base`, with no
+  normalization — `base: "/repo"` plus a helper that does `` `${BASE}${path}` ``
+  produces `/repomenu/`, not `/repo/menu/`. Set `base` with both a leading and
+  trailing slash (`"/repo/"`), or make the join itself slash-safe, and check the
+  actual `href` attributes in built output (`grep href dist/**/*.html`), not
+  just that the pages load. It also breaks the CI links check a different way:
+  `dist/` on disk has no subfolder matching `base`, so `linkinator ./dist`
+  404s on every base-prefixed link whether or not it's well-formed — that step
+  needs `--url-rewrite-search "/repo/" --url-rewrite-replace "/"` (unanchored;
+  linkinator matches against the full crawled URL, host included, so a `^`
+  anchor never fires) to map local paths back to what's actually on disk before
+  checking them. This didn't surface until the ship-time CI run, because
+  neither `pnpm check` nor a local dev server exercises the deployed base path
+  or the links check.
 
 ## Your process is part of the mark
 
