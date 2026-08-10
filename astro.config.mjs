@@ -5,5 +5,5 @@ import { defineConfig } from "astro/config";
 // asset URL needs this prefix or it 404s on the live URL while looking fine
 // in `astro dev`. See src/lib/url.ts for how internal links pick this up.
 export default defineConfig({
-  base: "/comp4020-crit2-wuyimin362-sudo",
+  base: "/comp4020-crit2-wuyimin362-sudo/",
 });
