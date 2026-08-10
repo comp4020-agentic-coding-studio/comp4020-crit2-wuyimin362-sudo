@@ -7,11 +7,12 @@ interface Props {
 }
 
 const { variant = "full" } = Astro.props;
+const Tag = variant === "compact" ? "h3" : "h2";
 ---
 
 <div class="contact-info" data-variant={variant}>
   <div class="contact-info__block">
-    <span class="section-label">Address</span>
+    <Tag class="section-label">Address</Tag>
     <address>
       {site.address.line1}<br />
       {site.address.line2}
@@ -20,7 +21,7 @@ const { variant = "full" } = Astro.props;
   </div>
 
   <div class="contact-info__block">
-    <span class="section-label">Hours</span>
+    <Tag class="section-label">Hours</Tag>
     <dl class="contact-info__hours">
       {
         site.hours.map((row) => (

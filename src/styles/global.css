@@ -95,8 +95,10 @@ a:not([class]) {
 
 .section-label {
   display: block;
+  font-family: var(--font-sans);
   font-size: var(--text-small);
   font-weight: 600;
+  line-height: var(--leading-normal);
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
   color: var(--color-ink-soft);
