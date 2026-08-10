@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import MenuSection from "../../components/MenuSection.astro";
+import { dinnerMenu, drinks } from "../../data/menu";
+---
+
+<BaseLayout
+  title="Menu — IORI"
+  description="IORI's full dinner menu: degustation and kaiseki courses, bento, sashimi, sushi, mains and sides, plus sake, wine, beer and spirits."
+>
+  <header class="section menu-hero">
+    <div class="container">
+      <span class="section-label">Menu</span>
+      <h1>Dinner at IORI</h1>
+      <p class="menu-hero__note">
+        Every dish and price below is exactly as served. Degustation courses
+        marked "minimum" are priced and prepared per person, for the whole
+        table.
+      </p>
+    </div>
+  </header>
+
+  <section class="section menu-body">
+    <div class="container menu-body__grid">
+      <div class="menu-body__nav" aria-hidden="true">
+        <span class="section-label">On this page</span>
+        <ol>
+          <li>Food</li>
+          <li>Drinks &amp; sake</li>
+        </ol>
+      </div>
+
+      <div class="menu-body__content">
+        <div class="menu-group">
+          <SectionHeading heading="Food" />
+          {dinnerMenu.map((category) => <MenuSection category={category} />)}
+        </div>
+
+        <div class="menu-group">
+          <SectionHeading heading="Drinks & Sake" />
+
+          <section class="menu-section" aria-labelledby="drinks-sake">
+            <h3 id="drinks-sake">{drinks.sake.title}</h3>
+            <p class="menu-section__note">{drinks.sake.note}</p>
+            <ul class="drinks-list">
+              {
+                drinks.sake.items.map((item) => (
+                  <li>
+                    <span class="drinks-list__name">{item.name}</span>
+                    <span class="drinks-list__desc">{item.description}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </section>
+
+          <section class="menu-section" aria-labelledby="drinks-wine">
+            <h3 id="drinks-wine">Wine</h3>
+            <p class="menu-section__note">{drinks.wineNote}</p>
+          </section>
+
+          <section class="menu-section" aria-labelledby="drinks-beer">
+            <h3 id="drinks-beer">Beer</h3>
+            <ul class="drinks-list drinks-list--inline">
+              {drinks.beer.map((name) => <li>{name}</li>)}
+            </ul>
+          </section>
+
+          <section class="menu-section" aria-labelledby="drinks-spirits">
+            <h3 id="drinks-spirits">Spirits &amp; Soft Drinks</h3>
+            <p class="menu-section__note">{drinks.spiritsNote}</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .menu-hero {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .menu-hero__note {
+    color: var(--color-ink-soft);
+    max-width: 46ch;
+    margin-top: var(--space-3);
+  }
+
+  .menu-body__grid {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .menu-body__nav {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .menu-body__nav ol {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    color: var(--color-ink-soft);
+    font-size: var(--text-small);
+  }
+
+  .menu-group {
+    margin-bottom: var(--space-9);
+  }
+
+  .menu-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .menu-group > :global(.section-heading) {
+    margin-bottom: var(--space-5);
+  }
+
+  .drinks-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .drinks-list__name {
+    font-weight: 500;
+    margin-right: var(--space-3);
+  }
+
+  .drinks-list__desc {
+    color: var(--color-ink-soft);
+    font-size: var(--text-small);
+  }
+
+  .drinks-list--inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+  }
+
+  .drinks-list--inline li {
+    color: var(--color-ink-soft);
+    font-size: var(--text-small);
+  }
+
+  @media (max-width: 56.25rem) {
+    .menu-body__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .menu-body__nav {
+      display: none;
+    }
+  }
+</style>

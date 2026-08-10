@@ -1,0 +1,177 @@
+---
+import { href } from "../lib/url";
+import { site } from "../data/site";
+
+const navItems = [
+  { label: "Home", path: "" },
+  { label: "Menu", path: "menu/" },
+  { label: "Experience", path: "experience/" },
+  { label: "Visit", path: "visit/" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="site-header__bar container">
+    <a class="site-header__mark" href={href()}>
+      <span class="site-header__kanji" aria-hidden="true">{site.kanji}</span>
+      <span class="site-header__wordmark">{site.name}</span>
+    </a>
+
+    <nav class="site-header__nav" aria-label="Primary">
+      <ul class="site-header__list" id="primary-nav-list">
+        {
+          navItems.map((item) => {
+            const url = href(item.path);
+            const isCurrent = currentPath === url;
+            return (
+              <li>
+                <a href={url} aria-current={isCurrent ? "page" : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <a class="site-header__call" href={site.phoneHref}>Call {site.phone}</a>
+
+    <button
+      class="site-header__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-nav-list"
+    >
+      Menu
+    </button>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-header__bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding-block: var(--space-4);
+  }
+
+  .site-header__mark {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    text-decoration: none;
+    margin-right: auto;
+  }
+
+  .site-header__kanji {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+  }
+
+  .site-header__wordmark {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .site-header__list {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+    padding: 0;
+    font-size: var(--text-nav);
+  }
+
+  .site-header__list a {
+    text-decoration: none;
+    padding-block: var(--space-1);
+    border-bottom: 1px solid transparent;
+  }
+
+  .site-header__list a:hover {
+    border-bottom-color: var(--color-ink-soft);
+  }
+
+  .site-header__list a[aria-current="page"] {
+    border-bottom-color: var(--color-accent);
+  }
+
+  .site-header__call {
+    font-size: var(--text-small);
+    text-decoration: none;
+    color: var(--color-ink-soft);
+    white-space: nowrap;
+  }
+
+  .site-header__call:hover {
+    color: var(--color-ink);
+  }
+
+  .site-header__toggle {
+    display: none;
+    font: inherit;
+    font-size: var(--text-nav);
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-4);
+    cursor: pointer;
+  }
+
+  @media (max-width: 43.75rem) {
+    .site-header__toggle {
+      display: block;
+    }
+
+    .site-header__nav {
+      flex-basis: 100%;
+      order: 3;
+    }
+
+    .site-header__list {
+      flex-direction: column;
+      gap: 0;
+      padding-block: var(--space-2);
+    }
+
+    .site-header__list a {
+      display: block;
+      padding-block: var(--space-3);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .site-header__bar {
+      flex-wrap: wrap;
+    }
+
+    .site-header__nav[data-open="false"] .site-header__list {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".site-header__toggle");
+  const nav = document.querySelector<HTMLElement>(".site-header__nav");
+
+  if (toggle && nav) {
+    nav.dataset.open = "false";
+    toggle.addEventListener("click", () => {
+      const isOpen = nav.dataset.open === "true";
+      nav.dataset.open = String(!isOpen);
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+    });
+  }
+</script>

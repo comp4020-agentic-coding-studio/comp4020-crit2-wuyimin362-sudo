@@ -146,17 +146,24 @@ site.
 
 ## Decisions confirmed before implementation
 
-1. **Using the real photos** — confirmed: use them. One correction found
-   during asset review: `2014_Degustation_Cover.jpg`, despite its name, is a
-   close-up portrait of an identifiable person's face, not food or room
+1. **Using the real photos** — confirmed: use them, with two corrections
+   found during asset review. `2014_Degustation_Cover.jpg`, despite its name,
+   is a close-up portrait of an identifiable person's face, not food or room
    photography — it was mis-described in an earlier pass of
-   `CURRENT_SITE_AUDIT.md`, now fixed. It's excluded from the shipped site;
-   a stranger's close-up face is a different, more sensitive kind of reuse
-   than food, room, or storefront photography, and nothing about the design
-   needs it. The three used instead: sake service at the bar
-   (`Degustation_Sake.jpg`), a real sashimi arrangement (`Sushi_01.jpg`), and
-   the storefront/signage photo in the East Row arcade that surfaced the
-   kanji mark above.
+   `CURRENT_SITE_AUDIT.md`, now fixed. It's excluded from the shipped site; a
+   stranger's close-up face is a different, more sensitive kind of reuse than
+   food, room, or storefront photography, and nothing about the design needs
+   it. Separately, the East Row storefront photo that surfaced the kanji mark
+   (see above) turned out to be a promotional graphic with hours and contact
+   details digitally stamped across it in a bold banner — a real photo, but
+   one that reads as a flyer, not editorial photography, and pasting it in
+   would reintroduce the "cheap template" look this direction argues against
+   with no cropping tool available to isolate just the shopfront cleanly. Its
+   factual content (the kanji, the real hours it confirmed) is kept — it's
+   just carried as text and as the kanji mark itself, rather than as a
+   displayed photo. Two real photographs are used as photography: sake
+   service at the bar (`Degustation_Sake.jpg`) and a real sashimi arrangement
+   (`Sushi_01.jpg`).
 2. **Naming "Mamoru Aizawa"** — confirmed: use it minimally, attributed
    exactly as the original reservation-page sign-off does, with no invented
    title or role.

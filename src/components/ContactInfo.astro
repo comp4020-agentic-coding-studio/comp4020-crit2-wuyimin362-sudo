@@ -1,0 +1,110 @@
+---
+import { href } from "../lib/url";
+import { site } from "../data/site";
+
+interface Props {
+  variant?: "full" | "compact";
+}
+
+const { variant = "full" } = Astro.props;
+---
+
+<div class="contact-info" data-variant={variant}>
+  <div class="contact-info__block">
+    <span class="section-label">Address</span>
+    <address>
+      {site.address.line1}<br />
+      {site.address.line2}
+    </address>
+    <a class="contact-info__map" href={site.mapUrl} rel="noopener">Get directions</a>
+  </div>
+
+  <div class="contact-info__block">
+    <span class="section-label">Hours</span>
+    <dl class="contact-info__hours">
+      {
+        site.hours.map((row) => (
+          <>
+            <dt>{row.days}</dt>
+            <dd>{row.time}</dd>
+          </>
+        ))
+      }
+    </dl>
+    {variant === "full" ? <p class="contact-info__note">{site.hoursNote}</p> : null}
+  </div>
+
+  <div class="contact-info__block">
+    <span class="section-label">Bookings</span>
+    <p>
+      <a href={site.phoneHref}>{site.phone}</a> · <a href={site.bookingSmsHref}>text {site.bookingSms}</a>
+    </p>
+    {variant === "full" ? <p class="contact-info__note">{site.bookingNote}</p> : null}
+    {
+      variant === "compact" ? (
+        <p>
+          <a href={href("visit/")}>Full visit details →</a>
+        </p>
+      ) : null
+    }
+  </div>
+</div>
+
+<style>
+  .contact-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-7);
+  }
+
+  .contact-info address {
+    font-style: normal;
+    line-height: var(--leading-snug);
+  }
+
+  .contact-info__map {
+    display: inline-block;
+    margin-top: var(--space-3);
+    font-size: var(--text-small);
+  }
+
+  .contact-info__hours {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-1) var(--space-4);
+    margin: 0;
+  }
+
+  .contact-info__hours dt {
+    color: var(--color-ink-soft);
+  }
+
+  .contact-info__hours dd {
+    margin: 0;
+    text-align: right;
+  }
+
+  .contact-info__note {
+    margin-top: var(--space-3);
+    font-size: var(--text-small);
+    color: var(--color-ink-soft);
+    max-width: 32ch;
+  }
+
+  .contact-info a {
+    text-decoration: underline;
+    text-decoration-color: var(--color-border);
+    text-underline-offset: 0.15em;
+  }
+
+  @media (max-width: 43.75rem) {
+    .contact-info {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .contact-info__hours dd {
+      text-align: left;
+    }
+  }
+</style>

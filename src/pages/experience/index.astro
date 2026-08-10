@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { site } from "../../data/site";
+
+const seatingModes = [
+  {
+    name: "Sushi bar",
+    copy: "Counter seats facing the bar, for anyone who'd rather watch the fish being cut than read about it on a menu.",
+  },
+  {
+    name: "Tables",
+    copy: "The main dining room, set for anything from a quiet dinner for two to a full kaiseki course.",
+  },
+  {
+    name: "Private function room",
+    copy: "A room of its own for larger groups, running from the same kitchen as the rest of the restaurant.",
+  },
+];
+---
+
+<BaseLayout
+  title="Experience — IORI"
+  description="What to expect at IORI: sushi bar, table, and private function room dining, and the recognition the restaurant has earned in Canberra."
+>
+  <header class="section experience-hero">
+    <div class="container">
+      <span class="section-label">Experience</span>
+      <h1>One kitchen, three ways to sit down</h1>
+      <p class="experience-hero__lede">
+        IORI seats guests at a sushi bar, at tables in the main room, or in a
+        private function room for larger groups — all served from the same
+        kitchen, made fresh to order.
+      </p>
+    </div>
+  </header>
+
+  <section class="section seating">
+    <div class="container seating__list">
+      {
+        seatingModes.map((mode) => (
+          <div class="seating__item">
+            <h2>{mode.name}</h2>
+            <p>{mode.copy}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section recognition-full">
+    <div class="container recognition-full__grid">
+      <SectionHeading label="Recognition" heading="Six years of the same kitchen" />
+      <ul class="recognition-full__list">
+        {
+          site.awards.map((award) => (
+            <li>
+              <strong>{award.name}</strong>
+              <span>{award.detail}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section sign-off">
+    <div class="container">
+      <p>{site.signOff}</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .experience-hero {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .experience-hero__lede {
+    font-size: var(--text-body-lg);
+    max-width: 52ch;
+    margin-top: var(--space-4);
+    color: var(--color-ink-soft);
+  }
+
+  .seating__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-7);
+  }
+
+  .seating__item h2 {
+    font-size: var(--text-h3);
+    margin-bottom: var(--space-2);
+  }
+
+  .seating__item p {
+    color: var(--color-ink-soft);
+    font-size: var(--text-small);
+  }
+
+  .recognition-full {
+    background: var(--color-surface);
+    border-block: 1px solid var(--color-border);
+  }
+
+  .recognition-full__list {
+    list-style: none;
+    padding: 0;
+    max-width: 42rem;
+    margin-top: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .recognition-full__list li {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recognition-full__list span {
+    color: var(--color-ink-soft);
+    font-size: var(--text-small);
+  }
+
+  .sign-off {
+    text-align: center;
+  }
+
+  .sign-off p {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-style: italic;
+    margin-inline: auto;
+  }
+
+  @media (max-width: 56.25rem) {
+    .seating__list {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+</style>

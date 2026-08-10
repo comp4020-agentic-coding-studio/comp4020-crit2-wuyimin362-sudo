@@ -42,12 +42,12 @@ already get a first-screen mention on Home (per the design direction, that's
 their strongest placement); this page is where someone who wants the detail
 finds it, alongside the real seating variety (sushi bar, tables, private
 function room) and the one real named sign-off (Mamoru Aizawa, used exactly
-as attributed — see the open question in `DESIGN_DIRECTION.md`). The current
-site's `/gallery/` doesn't become its own page: with three real photos, one
-of them an unrelated social-club event, a dedicated gallery would be the
-thinnest page on the site. What's actually usable from it (the sushi-bar
-seating shot) is placed here instead, where it supports a claim rather than
-padding out an empty grid.
+as attributed — confirmed in `DESIGN_DIRECTION.md`). The current site's
+`/gallery/` doesn't become its own page: of the photos reviewed, only two
+held up as real, usable, food-first photography (see the asset-review note
+in `DESIGN_DIRECTION.md`), and both already appear on Home — this page stays
+typography-led rather than reusing them a second time or padding out a thin
+gallery grid.
 
 ## Visit (`/visit/`)
 
@@ -57,9 +57,12 @@ and Reservation (hours, booking method) with no page linking the two.
 
 One page: address, a map link (new — the current site has none despite
 having a full address), hours exactly as published (including keeping the
-"subject to change without notice" caveat and not inventing a Sunday hours
-line the source never states), and the SMS booking method restated as a
-clear instruction rather than buried paragraph text. This is also the page
+"subject to change without notice" caveat), and the SMS booking method
+restated as a clear instruction rather than buried paragraph text. The
+Sunday/public-holiday closure — missing from every page of the current
+site, per the original audit — is included here too, sourced from the
+restaurant's own East Row shopfront signage (see the corrected
+`CURRENT_SITE_AUDIT.md`) rather than left as a gap. This is also the page
 `tel:`/`mailto:` links point to sitewide.
 
 ## Navigation

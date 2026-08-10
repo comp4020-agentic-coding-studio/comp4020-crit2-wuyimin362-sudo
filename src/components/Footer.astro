@@ -1,0 +1,95 @@
+---
+import { href } from "../lib/url";
+import { site } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div>
+      <p class="site-footer__wordmark">
+        <span aria-hidden="true">{site.kanji}</span>
+        {site.name}
+      </p>
+      <address class="site-footer__address">
+        {site.address.line1}<br />
+        {site.address.line2}
+      </address>
+    </div>
+
+    <div>
+      <span class="section-label">Visit</span>
+      <p><a href={site.phoneHref}>{site.phone}</a></p>
+      <p><a href={href("visit/")}>Hours &amp; booking</a></p>
+    </div>
+
+    <div>
+      <span class="section-label">Explore</span>
+      <p><a href={href("menu/")}>Menu</a></p>
+      <p><a href={href("experience/")}>Experience</a></p>
+    </div>
+
+    <div>
+      <span class="section-label">About this site</span>
+      <p>
+        An unsolicited redesign concept for
+        <a href={site.originalSiteUrl} rel="noopener">{site.name}</a>, a real
+        restaurant on East Row, Canberra — not affiliated with or endorsed by
+        the restaurant.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+    padding-block: var(--space-8);
+    font-size: var(--text-small);
+    color: var(--color-ink-soft);
+  }
+
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
+
+  .site-footer__wordmark {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    color: var(--color-ink);
+    margin-bottom: var(--space-3);
+  }
+
+  .site-footer__address {
+    font-style: normal;
+    line-height: var(--leading-snug);
+  }
+
+  .site-footer p {
+    margin-top: var(--space-2);
+  }
+
+  .site-footer a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .site-footer a:hover {
+    color: var(--color-ink);
+  }
+
+  @media (max-width: 56.25rem) {
+    .site-footer__grid {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: var(--space-7);
+    }
+  }
+
+  @media (max-width: 30rem) {
+    .site-footer__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

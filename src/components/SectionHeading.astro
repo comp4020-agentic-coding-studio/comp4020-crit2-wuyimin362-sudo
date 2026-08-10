@@ -1,0 +1,15 @@
+---
+interface Props {
+  label?: string;
+  heading: string;
+  level?: 2 | 3;
+}
+
+const { label, heading, level = 2 } = Astro.props;
+const Tag = level === 3 ? "h3" : "h2";
+---
+
+<div class="section-heading">
+  {label ? <span class="section-label">{label}</span> : null}
+  <Tag>{heading}</Tag>
+</div>

@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import ContactInfo from "../../components/ContactInfo.astro";
+import { site } from "../../data/site";
+---
+
+<BaseLayout
+  title="Visit — IORI"
+  description="Address, hours, and how to book a table at IORI on East Row, Canberra City."
+>
+  <header class="section visit-hero">
+    <div class="container">
+      <span class="section-label">Visit</span>
+      <h1>Find IORI on East Row</h1>
+    </div>
+  </header>
+
+  <section class="section visit-details">
+    <div class="container">
+      <ContactInfo variant="full" />
+    </div>
+  </section>
+
+  <section class="section booking">
+    <div class="container booking__grid">
+      <SectionHeading label="How to book" heading="Bookings are by phone or text" />
+      <div class="booking__copy">
+        <p>
+          Call <a href={site.phoneHref}>{site.phone}</a>, or text
+          <a href={site.bookingSmsHref}>{site.bookingSms}</a> with your name,
+          preferred date and time, party size, a contact number, and any
+          dietary requirements.
+        </p>
+        <p class="booking__note">{site.bookingNote}</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .visit-hero {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .booking {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .booking__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: var(--space-8);
+  }
+
+  .booking__copy p {
+    margin-bottom: var(--space-4);
+  }
+
+  .booking__note {
+    color: var(--color-ink-soft);
+    font-size: var(--text-small);
+  }
+
+  @media (max-width: 56.25rem) {
+    .booking__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
