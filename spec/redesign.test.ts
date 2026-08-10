@@ -4,10 +4,11 @@ import { JSDOM } from "jsdom";
 import { describe, expect, it } from "vitest";
 
 // This week's contract (C2, "Unsolicited redesign"): restructure a real
-// organisation's own information, not template placeholder copy. The org
-// isn't chosen yet, so these assert the *shape* the spec names explicitly —
-// who they are, what they do, how to find them — without hardcoding on any
-// one org. Once you've picked one, tighten these into assertions on its real
+// organisation's own information, not template placeholder copy, and credit
+// them with a link to their real site. The org isn't chosen yet, so these
+// assert the *shape* the spec names explicitly — who they are, what they do,
+// how to find them, a link to the original — without hardcoding on any one
+// org. Once you've picked one, tighten these into assertions on its real
 // content (its actual name, its actual address) rather than just structure.
 const DIST = resolve("dist");
 
@@ -56,5 +57,17 @@ describe("redesign: real information, not a placeholder", () => {
       text,
       "replace the starter's placeholder text with the organisation's real copy",
     ).not.toMatch(/lorem ipsum/i);
+  });
+
+  it("links out to the original organisation's real site", () => {
+    const doc = home!.doc;
+    const linksOut = [...doc.querySelectorAll("a[href]")].some((a) => {
+      const href = a.getAttribute("href") ?? "";
+      return /^https?:\/\//i.test(href) && !/\bgithub\.io\b/i.test(href);
+    });
+    expect(
+      linksOut,
+      "expected a link on the home page to the organisation's real (external) site",
+    ).toBe(true);
   });
 });
