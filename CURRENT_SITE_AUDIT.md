@@ -23,10 +23,18 @@ finding below is something actually observed on the live site (fetched
 - **The booking channel is actually low-friction, once found.** Text a phone
   number with name/date/time/party size — no account, no third-party platform,
   no fee. The mechanism is good; its visibility isn't.
-- **Some genuinely decent food photography exists.** The degustation spread
-  shot (`Degustation_Sake.jpg`, `2014_Degustation_Cover.jpg`) is a real DSLR
-  photo (Nikon D80) of an actual plated spread — evidence the food photographs
-  well. It's used as a tiny rotating banner thumbnail, not as a hero.
+- **Some genuinely decent photography exists.** A real DSLR shot (Nikon D80)
+  of sake service at the bar (`Degustation_Sake.jpg`) and a real sashimi
+  arrangement (`Sushi_01.jpg`) both hold up — evidence the food and room
+  photograph well. Both are used only as tiny rotating banner thumbnails, not
+  as a hero.
+- **The real name carries more meaning than the site ever says.** IORI's own
+  storefront signage in the East Row arcade shows the kanji **庵** — the
+  character read "iori," traditionally meaning a small hermitage or thatched
+  hut. The site's text never mentions this. The same signage photo also gives
+  cleaner hours than the Reservation page's text: Monday–Thursday from 6:00pm,
+  Friday–Saturday from 5:45pm, Sunday and public holidays closed — the closed
+  Sunday, in particular, is never stated anywhere in the site's own text.
 - **A real human touch, buried:** the reservation page signs off "Arigatou
   Gozaimasu! — IORI Staff and Mamoru Aizawa" — the only named person anywhere
   on the site, and it's on a booking-instructions page nobody reads for warmth.
@@ -58,7 +66,9 @@ finding below is something actually observed on the live site (fetched
 - **The logo is a 250×150px raster** (`logo.png`) — already near its display
   ceiling; it can't be enlarged for a hero or feature treatment without
   visible pixelation. Visually it reads as two small red dots, not a
-  developed wordmark — there isn't an existing mark worth preserving as-is.
+  developed wordmark. The real mark is elsewhere: the kanji 庵 on the
+  physical shopfront signage (see above), never used anywhere on the website
+  itself.
 - **No distinct visual identity.** The site runs a generic WordPress theme
   ("linguini," by a template vendor) in stock Open Sans / Open Sans Condensed.
   Nothing about the typography or layout is specific to IORI.

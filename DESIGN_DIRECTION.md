@@ -32,10 +32,17 @@ and instead argues it through typographic precision, real specificity
   doesn't have that ceiling, and still lets the few good real photos (the
   Nikon-shot degustation spread) land as considered moments rather than being
   diluted among filler.
-- The existing "logo" is two small red dots on a 250×150px file — there's
-  no developed mark to protect, but there is a color cue worth keeping: a
-  single, disciplined red accent (in the spirit of a hanko seal stamp used
-  once, deliberately) rather than introducing a new arbitrary accent color.
+- The existing web "logo" is two small red dots on a 250×150px file — no
+  developed mark to protect there. But the real mark exists elsewhere: IORI's
+  own shopfront signage in the East Row arcade carries the kanji **庵**
+  ("iori"), traditionally meaning a small hermitage or thatched hut — never
+  used anywhere on the site itself. That's a genuine piece of brand identity
+  this redesign can surface for the first time, and it directly supports
+  "Quiet Craft" as a description of what the name itself already means, not
+  just a design team's adjective. It also gives the single red accent a real
+  referent instead of an invented one: a hanko seal is traditionally a single
+  red character, so the kanji can serve as that mark, used exactly as
+  sparingly as a real seal would be.
 
 ## What this explicitly avoids, and why
 
@@ -137,22 +144,19 @@ thumbs; a minimal sticky header carries the wordmark and a call/reserve
 link, since phone-in-hand is the realistic mobile use case for a restaurant
 site.
 
-## Open questions for you before implementation
+## Decisions confirmed before implementation
 
-1. **Using the real photos.** The site currently reuses IORI's own photos —
-   downloaded from their live site — in a repo that goes public at the
-   ship cutoff. For a non-commercial course redesign exercise this is
-   fairly standard practice (and the crit brief itself anticipates sending
-   the real business the link if it turns out well), but it's still their
-   copyrighted material being re-hosted, and I'd rather you make that call
-   than have me decide it silently. Options: (a) use the real photos as
-   planned above, (b) use them only as local/dev references and ship with a
-   more abstract, typography-led homepage instead, or (c) something in
-   between (e.g. only the least personally-identifying shots).
-2. **Naming "Mamoru Aizawa."** The only real personal name on the whole site
-   is a sign-off on the reservation page ("Arigatou Gozaimasu! — IORI Staff
-   and Mamoru Aizawa"), with no stated role. I'd suggest using it only in a
-   low-stakes, accurate way (e.g. attributed exactly as the original
-   sign-off does) rather than building a "meet the chef" moment out of a
-   name whose role isn't actually confirmed. Confirm you're comfortable with
-   that, or want it left out entirely.
+1. **Using the real photos** — confirmed: use them. One correction found
+   during asset review: `2014_Degustation_Cover.jpg`, despite its name, is a
+   close-up portrait of an identifiable person's face, not food or room
+   photography — it was mis-described in an earlier pass of
+   `CURRENT_SITE_AUDIT.md`, now fixed. It's excluded from the shipped site;
+   a stranger's close-up face is a different, more sensitive kind of reuse
+   than food, room, or storefront photography, and nothing about the design
+   needs it. The three used instead: sake service at the bar
+   (`Degustation_Sake.jpg`), a real sashimi arrangement (`Sushi_01.jpg`), and
+   the storefront/signage photo in the East Row arcade that surfaced the
+   kanji mark above.
+2. **Naming "Mamoru Aizawa"** — confirmed: use it minimally, attributed
+   exactly as the original reservation-page sign-off does, with no invented
+   title or role.
