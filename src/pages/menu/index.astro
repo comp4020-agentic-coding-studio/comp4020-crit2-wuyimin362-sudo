@@ -1,8 +1,12 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
 import MenuSection from "../../components/MenuSection.astro";
 import { dinnerMenu, drinks } from "../../data/menu";
+import sakeService from "../../assets/photos/sake-service.jpg";
+import sashimi from "../../assets/photos/sashimi.jpg";
+import sushiSashimiPlatter from "../../assets/photos/sushi-sashimi-platter.jpg";
 ---
 
 <BaseLayout
@@ -34,7 +38,32 @@ import { dinnerMenu, drinks } from "../../data/menu";
       <div class="menu-body__content">
         <div class="menu-group">
           <SectionHeading heading="Food" />
-          {dinnerMenu.map((category) => <MenuSection category={category} />)}
+          {
+            dinnerMenu.map((category) => (
+              <>
+                <MenuSection category={category} />
+                {category.title === "Sashimi & Sushi" ? (
+                  <figure class="menu-photo">
+                    <Image
+                      src={sashimi}
+                      alt="A sashimi and sushi arrangement with ikura and avocado, plated at IORI"
+                      widths={[480, 800, 1100]}
+                      sizes="(min-width: 56.25rem) 32rem, 100vw"
+                    />
+                  </figure>
+                ) : null}
+                {category.title === "Sushi & Sashimi Platters" ? (
+                  <figure class="menu-photo menu-photo--portrait">
+                    <Image
+                      src={sushiSashimiPlatter}
+                      alt="An assorted sashimi and sushi platter at IORI, with seared salmon rolls, nigiri, teriyaki, and edamame"
+                    />
+                    <figcaption>From IORI's Instagram, @ioricanberra2001</figcaption>
+                  </figure>
+                ) : null}
+              </>
+            ))
+          }
         </div>
 
         <div class="menu-group">
@@ -53,6 +82,14 @@ import { dinnerMenu, drinks } from "../../data/menu";
                 ))
               }
             </ul>
+            <figure class="menu-photo">
+              <Image
+                src={sakeService}
+                alt="Two bottles of sake chilling in a lacquered ice bucket at IORI's bar counter"
+                widths={[480, 800, 1100]}
+                sizes="(min-width: 56.25rem) 32rem, 100vw"
+              />
+            </figure>
           </section>
 
           <section class="menu-section" aria-labelledby="drinks-wine">
@@ -171,6 +208,26 @@ import { dinnerMenu, drinks } from "../../data/menu";
   .drinks-list--inline li {
     color: var(--color-ink-soft);
     font-size: var(--text-small);
+  }
+
+  .menu-photo {
+    max-width: 32rem;
+    margin-block: var(--space-2) var(--space-6);
+  }
+
+  .menu-photo :global(img) {
+    border-radius: var(--radius-sm);
+    width: 100%;
+  }
+
+  .menu-photo--portrait {
+    max-width: 16rem;
+  }
+
+  .menu-photo figcaption {
+    color: var(--color-ink-soft);
+    font-size: var(--text-small);
+    margin-top: var(--space-2);
   }
 
   @media (max-width: 56.25rem) {

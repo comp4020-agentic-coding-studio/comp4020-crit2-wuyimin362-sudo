@@ -167,3 +167,47 @@ site.
 2. **Naming "Mamoru Aizawa"** — confirmed: use it minimally, attributed
    exactly as the original reservation-page sign-off does, with no invented
    title or role.
+3. **Photo library confirmed exhausted at two usable images** — when the
+   menu page shipped with no imagery, the natural next question was whether
+   a few more real photos could illustrate signature dishes there. Checked
+   both remaining leads: the live `/menu/dinner-menu/` and `/menu/drinks/`
+   pages carry no photography at all, and the two "usable" candidates from
+   the original audit count that hadn't been used yet turned out not to
+   qualify on closer inspection —
+   `C0A0D967-13D9-4EFB-AB18-883525D32D02.jpeg` (2020) is the storefront
+   "OPEN / hours" promotional graphic already excluded above (text stamped
+   over the photo, plus an identifiable bystander in frame), and
+   `Guests-Sushi-Bar4_resized.jpg` (2014) shows four identifiable real
+   customers' faces at the sushi bar with no food in view — the same
+   stranger's-likeness concern that excluded `2014_Degustation_Cover.jpg`.
+   At that point, the archived audit set and the live `iori.com.au` menu
+   pages were both exhausted. Both original photos now also appear on the
+   menu page itself, next to the category each literally depicts
+   (`sashimi.jpg` by "Sashimi & Sushi," `sake-service.jpg` by "Sake") rather
+   than only on the homepage — a more precise placement, not a new photo.
+4. **One more real photo found by checking IORI's live Instagram** — point 3's
+   "exhausted" conclusion was scoped to the archived audit and the static
+   website; it hadn't checked the restaurant's own active social media, which
+   is where a currently-operating restaurant's newest real photography
+   actually lives. Their official account, `@ioricanberra2001`, turned out to
+   have current food photography. Three recent posts were checked against the
+   same criteria used above:
+   - A sashimi/sushi/teriyaki platter shot (tagged "NEW" in-frame) is real,
+     current, food-only, and shows no identifiable people. Used on the menu
+     page next to "Sushi & Sashimi Platters" — the category it most literally
+     matches (`sushi-sashimi-platter.jpg`). Because it's a live social post
+     rather than the restaurant's own site, it's captioned with its source
+     directly on the page, unlike the other two photos.
+   - A "Spirit of Tasmania" post is a promotional flyer — price, phone
+     number, and offer copy stamped across the photo, the same "reads as a
+     flyer, not editorial photography" problem as the storefront graphic
+     excluded in point 1. Excluded.
+   - A dining-room interior shot is real and unpeopled, but has the
+     restaurant's name and tagline burned into the image as text. It's
+     outside this task's scope (menu dishes, not atmosphere), so it was set
+     aside rather than fully evaluated — worth a second look if the homepage
+     Atmosphere section ever revisits using a real photo instead of copy.
+
+   Lesson for next time: check the restaurant's own live social accounts
+   *before* concluding a real-photo library is exhausted, not just its
+   archived assets and static site.
